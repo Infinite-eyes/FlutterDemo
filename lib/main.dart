@@ -41,6 +41,9 @@ class RandomWordsState extends State<RandomWords> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Startup Name Cenerator'),
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
+        ],
       ),
       body: _buildSuggestions(),
     );
@@ -62,6 +65,7 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair) {
+
     final alreadySaved = _saved.contains(pair);
 
     return new ListTile(
@@ -73,7 +77,6 @@ class RandomWordsState extends State<RandomWords> {
           alreadySaved ? Icons.favorite : Icons.favorite_border,
           color: alreadySaved ? Colors.red : null,
         ),
-
         onTap: () {
           setState(() {
             if (alreadySaved) {
@@ -82,8 +85,29 @@ class RandomWordsState extends State<RandomWords> {
               _saved.add(pair);
             }
           });
-        }
+        });
+  }
 
-    );
+  void _pushSaved() {
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      final titles = _saved.map((pair) {
+        return new ListTile(
+            title: new Text(
+          pair.asPascalCase,
+          style: _biggerFont,
+        ));
+      });
+      final divided = ListTile.divideTiles(
+        context: context,
+        tiles: titles,
+      ).toList();
+
+      return new Scaffold(
+        appBar: new AppBar(
+          title: new Text('Saved Suggestions'),
+        ),
+        body: new ListView(children: divided),
+      );
+    }));
   }
 }
