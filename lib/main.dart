@@ -12,7 +12,10 @@ class MyApp extends StatelessWidget {
 //    final wordPair = new WordPair.random();
 
     return MaterialApp(
-        title: 'Welcome to Flutter',
+        title: 'Startup Name Generator',
+        theme: new ThemeData(
+          primaryColor: Colors.white,
+        ),
         home: new Scaffold(
           appBar: new AppBar(
             title: new Text('Welcome to Flutter'),
@@ -65,7 +68,6 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair) {
-
     final alreadySaved = _saved.contains(pair);
 
     return new ListTile(
