@@ -1,101 +1,50 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(new MaterialApp(
-    title: 'Shopping App',
-    home: new ShoppingList(
-      products: <Product>[
-        new Product(name: 'Eggs'),
-        new Product(name: 'Flor'),
-        new Product(name: 'Chocolate chips'),
-      ],
+  runApp(
+    new MaterialApp(
+      title: 'Shopping App',
+      home: FirstScereen(),
     ),
-  ));
+  );
 }
 
-class Product {
-  const Product({this.name});
-
-  final String name;
-}
-
-typedef void CartChangedCallback(Product product, bool inCart);
-
-class ShoppingListItem extends StatelessWidget {
-  ShoppingListItem({Product product, this.inCart, this.onCartChanged})
-      : product = product,
-        super(key: new ObjectKey(product));
-
-  final Product product;
-  final bool inCart;
-  final CartChangedCallback onCartChanged;
-
-  Color _getColor(BuildContext context) {
-    return inCart ? Colors.black54 : Theme.of(context).primaryColor;
-  }
-
-  TextStyle _getTextStyle(BuildContext context) {
-    if (!inCart) return null;
-
-    return new TextStyle(
-      color: Colors.black54,
-      decoration: TextDecoration.lineThrough,
-    );
-  }
-
+class FirstScereen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new ListTile(
-      onTap: () {
-        onCartChanged(product, !inCart);
-      },
-      leading: new CircleAvatar(
-        backgroundColor: _getColor(context),
-        child: new Text(product.name[0]),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First page'),
       ),
-      title: new Text(product.name, style: _getTextStyle(context)),
+      body: Center(
+        child: RaisedButton(
+          child: Text('Go to 2nd page'),
+          onPressed: () {
+            print('This is first page');
+            Navigator.push((context),
+                MaterialPageRoute(builder: (context) => SecondScreen()));
+          },
+        ),
+      ),
     );
   }
 }
 
-class ShoppingList extends StatefulWidget {
-  ShoppingList({Key key, this.products}) : super(key: key);
-
-  final List<Product> products;
-
-  @override
-  State<StatefulWidget> createState() {
-    return new _ShoppingListState();
-  }
-}
-
-class _ShoppingListState extends State<ShoppingList> {
-  Set<Product> _shoppingCart = new Set<Product>();
-
-  void _handleCartChanged(Product product, bool inCart) {
-    setState(() {
-      if (inCart)
-        _shoppingCart.add(product);
-      else
-        _shoppingCart.remove(product);
-    });
-  }
-
+class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Shopping List'),
+    print('${this} hashCode = ${this.hashCode}');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Second page'),
       ),
-      body: new ListView(
-        padding: new EdgeInsets.symmetric(vertical: 8.0),
-        children: widget.products.map((Product product) {
-          return new ShoppingListItem(
-            product: product,
-            inCart: _shoppingCart.contains(product),
-            onCartChanged: _handleCartChanged,
-          );
-        }).toList(),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            print('This is 2nd page');
+            Navigator.pop(context);
+          },
+        ),
       ),
     );
   }
