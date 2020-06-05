@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/page/secondscreen.dart';
 
 const String words1 = "Almost before we knew it, we had left the ground.";
 const String words2 = "A shining crescent far beneath the flying vessel.";
@@ -31,27 +32,33 @@ class FontsPage extends StatefulWidget {
 class _FontsPageState extends State<FontsPage> {
   @override
   Widget build(BuildContext context) {
-    var rockSaltContainer = new Container(
-      child: new Column(
-        children: <Widget>[
-          new Text(
-            "Rock Salt",
-          ),
-          new Text(
-            words2,
-            textAlign: TextAlign.center,
-            style: new TextStyle(
-              fontFamily: "Rock Salt",
-              fontSize: 17.0,
+    var rockSaltContainer = new InkWell(
+      onTap: (){
+        print("点击了");
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>new SecondScreen()));
+      },
+      child: Container(
+        child: new Column(
+          children: <Widget>[
+            new Text(
+              "Rock Salt",
             ),
-          )
-        ],
-      ),
-      margin: const EdgeInsets.all(10.0),
-      padding: const EdgeInsets.all(10.0),
-      decoration: new BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: new BorderRadius.all(new Radius.circular(5.0)),
+            new Text(
+              words2,
+              textAlign: TextAlign.center,
+              style: new TextStyle(
+                fontFamily: "Rock Salt",
+                fontSize: 17.0,
+              ),
+            )
+          ],
+        ),
+        margin: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
+        decoration: new BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: new BorderRadius.all(new Radius.circular(5.0)),
+        ),
       ),
     );
 
