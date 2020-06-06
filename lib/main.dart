@@ -1,196 +1,114 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/page/secondscreen.dart';
+import 'package:flutterapp/page/fontspage.dart';
+import 'package:flutterapp/page/product_list.dart' as Product;
+import 'package:flutterapp/page/shop_list.dart' as ShopList;
 
-const String words1 = "Almost before we knew it, we had left the ground.";
-const String words2 = "A shining crescent far beneath the flying vessel.";
-const String words3 = "A red flair silhouetted the jagged edge of a wing.";
-const String words4 = "Mist enveloped the ship three hours out from port.";
+class Example {
+  final String title;
+  final String description;
+  final String route;
+
+  Example(this.title, this.description, this.route);
+}
 
 void main() {
-  runApp(new MyApp());
+  runApp(new MaterialApp(
+    title: 'Shopping App',
+    home: new ExampleList(
+      examples: <Example>[
+        new Example("fonts", "fonts pages", "FONTS"),
+        new Example("shop_list", "shop_list pages", "SHOP_LIST"),
+        new Example("product_list", "product_list pages", "PRODUCT_LIST"),
+      ],
+    ),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Fonts',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: new FontsPage(),
-    );
-  }
-}
+class ExampleList extends StatefulWidget {
+  ExampleList({Key key, this.examples}) : super(key: key);
 
-class FontsPage extends StatefulWidget {
+  final List<Example> examples;
+
   @override
   State<StatefulWidget> createState() {
-    return _FontsPageState();
+    return new _ExampleListState();
   }
 }
 
-class _FontsPageState extends State<FontsPage> {
+typedef void OnItemClick(Example product);
+
+//
+class ExampleListItem extends StatelessWidget {
+  ExampleListItem({Example example, this.onItemClick})
+      : example = example,
+        super(key: new ObjectKey(example));
+  final Example example;
+  final OnItemClick onItemClick;
+
   @override
   Widget build(BuildContext context) {
-    var rockSaltContainer = new InkWell(
-      onTap: (){
-        print("点击了");
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>new SecondScreen()));
+    return new ListTile(
+      onTap: () {
+        onItemClick(example);
       },
-      child: Container(
-        child: new Column(
-          children: <Widget>[
-            new Text(
-              "Rock Salt",
-            ),
-            new Text(
-              words2,
-              textAlign: TextAlign.center,
-              style: new TextStyle(
-                fontFamily: "Rock Salt",
-                fontSize: 17.0,
-              ),
-            )
-          ],
-        ),
-        margin: const EdgeInsets.all(10.0),
-        padding: const EdgeInsets.all(10.0),
-        decoration: new BoxDecoration(
-          color: Colors.grey.shade200,
-          borderRadius: new BorderRadius.all(new Radius.circular(5.0)),
-        ),
+      leading: new CircleAvatar(
+        child: new Text(example.title[0]),
       ),
+      title: new Text(example.title),
     );
+  }
+}
 
-    var v2t323Container = new Container(
-      child: new Column(
-        children: <Widget>[
-          new Text(
-            "VT323",
-          ),
-          new Text(
-            words3,
-            textAlign: TextAlign.center,
-            style: new TextStyle(fontFamily: "VT323", fontSize: 25.0),
-          ),
-        ],
-      ),
-      margin: const EdgeInsets.all(10.0),
-      padding: const EdgeInsets.all(10.0),
-      decoration: new BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: new BorderRadius.all(new Radius.circular(5.0)),
-      ),
-    );
+class _ExampleListState extends State<ExampleList> {
+  Set<Example> _example = new Set<Example>();
 
-    var ewertContainer = new Container(
-      child: new Column(
-        children: <Widget>[
-          new Text(
-            "Ewert",
-          ),
-          new Text(
-            words4,
-            textAlign: TextAlign.center,
-            style: new TextStyle(
-              fontFamily: "Ewert",
-              fontSize: 25.0,
-            ),
-          ),
-        ],
-      ),
-      margin: const EdgeInsets.all(10.0),
-      padding: const EdgeInsets.all(10.0),
-      decoration: new BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: new BorderRadius.all(new Radius.circular(5.0)),
-      ),
-    );
+  void _onItemClick(Example example) {
+    switch (example.route) {
+//    new Example("fonts", "fonts pages", "FONTS"),
+//    new Example("shop_list", "shop_list pages", "SHOP_LIST"),
+//    new Example("product_list", "product_list pages", "PRODUCT_LIST"),
+      case "FONTS":
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => new FontsPage()));
+        break;
+      case "SHOP_LIST":
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => new ShopList.ShoppingList(
+                      products: <ShopList.Product>[
+                        new ShopList.Product(name: 'Eggs'),
+                        new ShopList.Product(name: 'Flor'),
+                        new ShopList.Product(name: 'Chocolate chips'),
+                      ],
+                    )));
+        break;
+      case "PRODUCT_LIST":
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => new Product.ProductList(products: new List.generate(20, (i) => new Product.Product('商品 $i', '这是一个商品的详情 $i')))
 
-    // Material Icons font - included with Material Design
-    String icons = "";
 
-    // https://material.io/icons/#ic_accessible
-    // accessible: &#xE914; or 0xE914 or E914
-    icons += "\u{E914}";
+            ));
+        break;
+    }
+  }
 
-    // https://material.io/icons/#ic_error
-    // error: &#xE000; or 0xE000 or E000
-    icons += "\u{E000}";
-
-    // https://material.io/icons/#ic_fingerprint
-    // fingerprint: &#xE90D; or 0xE90D or E90D
-    icons += "\u{E90D}";
-
-    // https://material.io/icons/#ic_camera
-    // camera: &#xE3AF; or 0xE3AF or E3AF
-    icons += "\u{E3AF}";
-
-    // https://material.io/icons/#ic_palette
-    // palette: &#xE40A; or 0xE40A or E40A
-    icons += "\u{E40A}";
-
-    // https://material.io/icons/#ic_tag_faces
-    // tag faces: &#xE420; or 0xE420 or E420
-    icons += "\u{E420}";
-
-    // https://material.io/icons/#ic_directions_bike
-    // directions bike: &#xE52F; or 0xE52F or E52F
-    icons += "\u{E52F}";
-
-    // https://material.io/icons/#ic_airline_seat_recline_extra
-    // airline seat recline extra: &#xE636; or 0xE636 or E636
-    icons += "\u{E636}";
-
-    // https://material.io/icons/#ic_beach_access
-    // beach access: &#xEB3E; or 0xEB3E or EB3E
-    icons += "\u{EB3E}";
-
-    // https://material.io/icons/#ic_public
-    // public: &#xE80B; or 0xE80B or E80B
-    icons += "\u{E80B}";
-
-    // https://material.io/icons/#ic_star
-    // star: &#xE838; or 0xE838 or E838
-    icons += "\u{E838}";
-
-    var materialIconsContainer = new Container(
-      child: new Column(
-        children: <Widget>[
-          new Text(
-            "Material Icons",
-          ),
-          new Text(
-            icons,
-            textAlign: TextAlign.center,
-            style: new TextStyle(
-              inherit: false,
-              fontFamily: "MaterialIcons",
-              color: Colors.black,
-              fontSize: 25.0,
-            ),
-          )
-        ],
-      ),
-      margin: const EdgeInsets.all(10.0),
-      padding: const EdgeInsets.all(10.0),
-      decoration: new BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: new BorderRadius.all(new Radius.circular(5.0)),
-      ),
-    );
-
+  @override
+  Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Fonts"),
+        title: new Text('Shopping List'),
       ),
       body: new ListView(
-        children: <Widget>[
-          rockSaltContainer,
-          v2t323Container,
-          ewertContainer,
-          materialIconsContainer,
-        ],
+        padding: new EdgeInsets.symmetric(vertical: 8.0),
+        children: widget.examples.map((Example example) {
+          return new ExampleListItem(
+            example: example,
+            onItemClick: _onItemClick,
+          );
+        }).toList(),
       ),
     );
   }
