@@ -14,16 +14,19 @@ class Example {
 
 void main() {
   runApp(new MaterialApp(
-    title: 'Shopping App',
-    home: new ExampleList(
-      examples: <Example>[
-        new Example("fonts", "fonts pages", "FONTS"),
-        new Example("shop_list", "shop_list pages", "SHOP_LIST"),
-        new Example("product_list", "product_list pages", "PRODUCT_LIST"),
-        new Example("form", "form pages", "FORM"),
-      ],
-    ),
-  ));
+      title: 'Shopping App',
+      home: new ExampleList(
+        examples: <Example>[
+          new Example("fonts", "fonts pages", "FONTS"),
+          new Example("shop_list", "shop_list pages", "SHOP_LIST"),
+          new Example("product_list", "product_list pages", "PRODUCT_LIST"),
+          new Example("form", "form pages", "FORM"),
+        ],
+      ),
+      routes: {
+        '/fonts': (context) => FormPage(),
+        '/shop_list': (context) => ShopList.ShoppingList(),
+      }));
 }
 
 class ExampleList extends StatefulWidget {
@@ -70,8 +73,9 @@ class _ExampleListState extends State<ExampleList> {
 //    new Example("shop_list", "shop_list pages", "SHOP_LIST"),
 //    new Example("product_list", "product_list pages", "PRODUCT_LIST"),
       case "FONTS":
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => new FontsPage()));
+//        Navigator.push(
+//            context, MaterialPageRoute(builder: (context) => new FontsPage()));
+        Navigator.pushNamed(context, '/form');
         break;
       case "SHOP_LIST":
         Navigator.push(
