@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/page/fontspage.dart';
+import 'package:flutterapp/page/form.dart';
 import 'package:flutterapp/page/product_list.dart' as Product;
 import 'package:flutterapp/page/shop_list.dart' as ShopList;
 
@@ -19,6 +20,7 @@ void main() {
         new Example("fonts", "fonts pages", "FONTS"),
         new Example("shop_list", "shop_list pages", "SHOP_LIST"),
         new Example("product_list", "product_list pages", "PRODUCT_LIST"),
+        new Example("form", "form pages", "FORM"),
       ],
     ),
   ));
@@ -90,6 +92,12 @@ class _ExampleListState extends State<ExampleList> {
                 builder: (context) => new Product.ProductList(
                     products: new List.generate(20,
                         (i) => new Product.Product('商品 $i', '这是一个商品的详情 $i')))));
+        break;
+
+      case "FORM":
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return FormPage(title: "跳转传值");
+        }));
         break;
     }
   }
