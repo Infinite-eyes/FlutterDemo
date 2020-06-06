@@ -87,10 +87,9 @@ class _ExampleListState extends State<ExampleList> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => new Product.ProductList(products: new List.generate(20, (i) => new Product.Product('商品 $i', '这是一个商品的详情 $i')))
-
-
-            ));
+                builder: (context) => new Product.ProductList(
+                    products: new List.generate(20,
+                        (i) => new Product.Product('商品 $i', '这是一个商品的详情 $i')))));
         break;
     }
   }
