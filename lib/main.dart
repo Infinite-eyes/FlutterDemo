@@ -25,6 +25,21 @@ void main() {
           new Example("nav", "nav pages", "NAV"),
         ],
       ),
+      onGenerateRoute: (settings) {
+        if (settings.name == PassArgumentsScreen.routeName) {
+          final ScreenArguments args = settings.arguments;
+          return MaterialPageRoute(
+            builder: (context) {
+              return PassArgumentsScreen(
+                title: args.title,
+                message: args.message,
+              );
+            },
+          );
+        }
+        assert(false, 'Need to implement ${settings.name}');
+        return null;
+      },
       routes: {
         '/fonts': (context) => FontsPage(),
         '/shop_list': (context) => ShopList.ShoppingList(),

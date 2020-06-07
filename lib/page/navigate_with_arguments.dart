@@ -9,6 +9,29 @@ class ScreenArguments {
   ScreenArguments(this.title, this.message);
 }
 
+class PassArgumentsScreen extends StatelessWidget {
+  static const routeName = '/passArguments';
+
+  final String title;
+  final String message;
+
+  const PassArgumentsScreen(
+      {Key key, @required this.title, @required this.message})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: Center(
+        child: Text(message),
+      ),
+    );
+  }
+}
+
 class ExtractArgumentsScreen extends StatelessWidget {
   static const routeName = '/extractArguments';
 
@@ -58,6 +81,14 @@ class HomeScreen extends StatelessWidget {
               );
             },
           ),
+          RaisedButton(
+            child: Text("Navigate to a named that accepts arguments"),
+            onPressed: () {
+              Navigator.pushNamed(context, PassArgumentsScreen.routeName,
+                  arguments: ScreenArguments('Accept Arguments Screen',
+                      'This message is extracted in the onGenerateRout function.'));
+            },
+          )
         ],
       )),
     );
