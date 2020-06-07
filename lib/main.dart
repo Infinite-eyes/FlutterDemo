@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/page/fontspage.dart';
 import 'package:flutterapp/page/form.dart';
 import 'package:flutterapp/page/navigate_with_arguments.dart';
 import 'package:flutterapp/page/product_list.dart' as Product;
-import 'package:flutterapp/page/search_page.dart';
 import 'package:flutterapp/page/shop_list.dart' as ShopList;
+import 'package:flutterapp/routes/routes.dart';
 
 class Example {
   final String title;
@@ -14,44 +13,21 @@ class Example {
   Example(this.title, this.description, this.route);
 }
 
-final routes = {
-  '/fonts': (context) => FontsPage(),
-  '/shop_list': (context) => ShopList.ShoppingList(),
-  '/search': (context, {arguments}) => SearchPage(arguments: arguments),
-  ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
-};
-
 void main() {
   runApp(new MaterialApp(
-    title: 'ExampleList App',
-    home: new ExampleList(
-      examples: <Example>[
-        new Example("fonts", "fonts pages", "FONTS"),
-        new Example("shop_list", "shop_list pages", "SHOP_LIST"),
-        new Example("product_list", "product_list pages", "PRODUCT_LIST"),
-        new Example("form", "form pages", "FORM"),
-        new Example("nav", "nav pages", "NAV"),
-        new Example("search", "search pages", "SEARCH"),
-      ],
-    ),
-    onGenerateRoute: (RouteSettings settings) {
-      final String name = settings.name;
-      final Function pageContentBuilder = routes[name];
-      if (pageContentBuilder != null) {
-        if (settings.arguments != null) {
-          final Route route = MaterialPageRoute(
-              builder: (context) =>
-                  pageContentBuilder(context, arguments: settings.arguments));
-          return route;
-        } else {
-          final Route route = MaterialPageRoute(
-              builder: (context) => pageContentBuilder(context));
-          return route;
-        }
-      }
-      return null;
-    },
-  ));
+      title: 'ExampleList App',
+      home: new ExampleList(
+        examples: <Example>[
+          new Example("fonts", "fonts pages", "FONTS"),
+          new Example("shop_list", "shop_list pages", "SHOP_LIST"),
+          new Example("product_list", "product_list pages", "PRODUCT_LIST"),
+          new Example("form", "form pages", "FORM"),
+          new Example("nav", "nav pages", "NAV"),
+          new Example("search", "search pages", "SEARCH"),
+          new Example("product", "product pages", "PRODUCT"),
+        ],
+      ),
+      onGenerateRoute: onGenerateRoute));
 }
 
 class ExampleList extends StatefulWidget {
@@ -134,6 +110,11 @@ class _ExampleListState extends State<ExampleList> {
 
       case "SEARCH":
         Navigator.pushNamed(context, '/search', arguments: {'id': 123});
+//        Navigator.pushNamed(context, '/search', arguments: {'id', 123});
+        break;
+
+      case "PRODUCT":
+        Navigator.pushNamed(context, '/product');
 //        Navigator.pushNamed(context, '/search', arguments: {'id', 123});
         break;
     }
