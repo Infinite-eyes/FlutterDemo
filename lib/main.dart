@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/page/fontspage.dart';
 import 'package:flutterapp/page/form.dart';
+import 'package:flutterapp/page/navigate_with_arguments.dart';
 import 'package:flutterapp/page/product_list.dart' as Product;
 import 'package:flutterapp/page/shop_list.dart' as ShopList;
 
@@ -14,18 +15,20 @@ class Example {
 
 void main() {
   runApp(new MaterialApp(
-      title: 'Shopping App',
+      title: 'ExampleList App',
       home: new ExampleList(
         examples: <Example>[
           new Example("fonts", "fonts pages", "FONTS"),
           new Example("shop_list", "shop_list pages", "SHOP_LIST"),
           new Example("product_list", "product_list pages", "PRODUCT_LIST"),
           new Example("form", "form pages", "FORM"),
+          new Example("nav", "nav pages", "NAV"),
         ],
       ),
       routes: {
-        '/fonts': (context) => FormPage(),
+        '/fonts': (context) => FontsPage(),
         '/shop_list': (context) => ShopList.ShoppingList(),
+        ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
       }));
 }
 
@@ -69,13 +72,10 @@ class _ExampleListState extends State<ExampleList> {
 
   void _onItemClick(Example example) {
     switch (example.route) {
-//    new Example("fonts", "fonts pages", "FONTS"),
-//    new Example("shop_list", "shop_list pages", "SHOP_LIST"),
-//    new Example("product_list", "product_list pages", "PRODUCT_LIST"),
       case "FONTS":
 //        Navigator.push(
 //            context, MaterialPageRoute(builder: (context) => new FontsPage()));
-        Navigator.pushNamed(context, '/form');
+        Navigator.pushNamed(context, '/fonts');
         break;
       case "SHOP_LIST":
         Navigator.push(
@@ -101,6 +101,12 @@ class _ExampleListState extends State<ExampleList> {
       case "FORM":
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return FormPage(title: "跳转传值");
+        }));
+        break;
+
+      case "NAV":
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return Nav();
         }));
         break;
     }
