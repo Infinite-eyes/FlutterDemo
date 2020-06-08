@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/page/fontspage.dart';
+import 'package:flutterapp/page/http_page.dart';
 import 'package:flutterapp/page/navigate_with_arguments.dart';
 import 'package:flutterapp/page/product_info.dart';
 import 'package:flutterapp/page/search_page.dart';
@@ -12,6 +13,7 @@ final routes = {
   '/search': (context, {arguments}) => SearchPage(arguments: arguments),
   '/product': (context) => ProductPage(),
   '/product_info': (context, {arguments}) => ProductInfoPage(arguments: arguments),
+  '/http': (context, {arguments}) => HttpPage(),
   ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
 };
 

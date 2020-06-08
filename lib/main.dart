@@ -25,6 +25,7 @@ void main() {
           new Example("nav", "nav pages", "NAV"),
           new Example("search", "search pages", "SEARCH"),
           new Example("product", "product pages", "PRODUCT"),
+          new Example("http", "http pages", "HTTP"),
         ],
       ),
       onGenerateRoute: onGenerateRoute));
@@ -116,6 +117,10 @@ class _ExampleListState extends State<ExampleList> {
       case "PRODUCT":
         Navigator.pushNamed(context, '/product');
 //        Navigator.pushNamed(context, '/search', arguments: {'id', 123});
+        break;
+
+      case "HTTP":
+        Navigator.pushNamed(context, '/http');
         break;
     }
   }
