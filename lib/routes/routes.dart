@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/page/counter_page.dart';
 import 'package:flutterapp/page/fontspage.dart';
 import 'package:flutterapp/page/http_dio_page.dart';
 import 'package:flutterapp/page/http_page.dart';
@@ -17,6 +18,7 @@ final routes = {
       ProductInfoPage(arguments: arguments),
   '/http': (context, {arguments}) => HttpPage(),
   '/dio': (context, {arguments}) => HttpDioPage(),
+  '/counter': (context, {arguments}) => CounterPage(),
   ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
 };
 

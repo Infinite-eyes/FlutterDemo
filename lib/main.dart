@@ -27,6 +27,7 @@ void main() {
           new Example("product", "product pages", "PRODUCT"),
           new Example("http", "http pages", "HTTP"),
           new Example("dio", "dio pages", "DIO"),
+          new Example("counter", "counter pages", "COUNTER"),
         ],
       ),
       onGenerateRoute: onGenerateRoute));
@@ -125,6 +126,10 @@ class _ExampleListState extends State<ExampleList> {
         break;
       case "DIO":
         Navigator.pushNamed(context, '/dio');
+        break;
+
+      case "COUNTER":
+        Navigator.pushNamed(context, '/counter');
         break;
 
     }
