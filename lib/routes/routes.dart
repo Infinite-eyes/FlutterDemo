@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/page/counter_page.dart';
+import 'package:flutterapp/page/counter_page_bloc.dart';
 import 'package:flutterapp/page/fontspage.dart';
 import 'package:flutterapp/page/http_dio_page.dart';
 import 'package:flutterapp/page/http_page.dart';
@@ -19,6 +20,10 @@ final routes = {
   '/http': (context, {arguments}) => HttpPage(),
   '/dio': (context, {arguments}) => HttpDioPage(),
   '/counter': (context, {arguments}) => CounterPage(),
+  '/bloc': (context) => BlocProvider<IncrementBloc>(
+        bloc: IncrementBloc(),
+        child: CounterBlocPage(),
+      ),
   ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
 };
 
