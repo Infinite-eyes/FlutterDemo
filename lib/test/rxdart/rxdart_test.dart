@@ -141,20 +141,59 @@ main() {
 //  Observable.combineLatest([observable1, observable2], (num) => num)
 //      .listen(print);
 
-
-
 //v16
 
-var observable1 = Observable.just(1);
-var observable2 = Observable.just(5);
+//var observable1 = Observable.just(1);
+//var observable2 = Observable.just(5);
+//
+//var observable = Observable(Stream.fromIterable([1,2,3,4,5]));
+//
+//observable.mergeWith([observable2,observable1])
+//.listen(print);
 
-var observable = Observable(Stream.fromIterable([1,2,3,4,5]));
+//v17
 
-observable.mergeWith([observable2,observable1])
-.listen(print);
+//  PublishSubject subject1 = new PublishSubject<int>();
+////  subject1.add(2);
+////  subject1.add(1);
+//
+//  subject1.stream.listen((data) {
+//    print("listen1 " + data.toString());
+//  });
+////  subject1.add(5);
+//  subject1.stream.listen((data) {
+//    print("listen2 " + data.toString());
+//  });
+//
+//  subject1.add(2);
+//  subject1.add(1);
 
+//v18  https://www.jianshu.com/p/0467213c2615
+//  BehaviorSubject behaviorSubject = new BehaviorSubject();
+//  behaviorSubject.add(1);
+//
+//  behaviorSubject.stream.listen((data) {
+//    print("listen1 " + data.toString());
+//  });
+//
+//  behaviorSubject.add(2);
+//
+//  behaviorSubject.stream.listen((data){
+//    print('listen2 ' + data.toString());
+//  });
 
+//v19
+  ReplaySubject replaySubject = new ReplaySubject<String>(maxSize: 1);
+  replaySubject.add("1");
+  replaySubject.stream.listen((data){
+    print("listen1 " + data);
+  });
+
+  replaySubject.add("2");
+  replaySubject.add("3");
+  replaySubject.stream.listen((data){
+    print("listen2 " + data);
+  });
 
 
 }
-
