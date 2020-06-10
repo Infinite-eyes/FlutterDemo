@@ -3,7 +3,7 @@ import 'package:flutterapp/bloc/application_bloc.dart';
 import 'package:flutterapp/bloc/bloc_provider.dart';
 import 'package:flutterapp/page/counter_page.dart';
 import 'package:flutterapp/page/counter_page_bloc.dart';
-import 'package:flutterapp/page/filters.dart';
+import 'package:flutterapp/page/movie/filters.dart';
 import 'package:flutterapp/page/fontspage.dart';
 import 'package:flutterapp/page/http_dio_page.dart';
 import 'package:flutterapp/page/http_page.dart';

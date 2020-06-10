@@ -10,6 +10,7 @@ import 'package:flutterapp/model/movie_genre_list.dart';
 
 /**
  * des : https://github.com/boeledi/Streams-Block-Reactive-Programming-in-Flutter
+ *       https://www.jianshu.com/p/4d5e712594b4
  *
  */
 class FiltersPage extends StatefulWidget {
@@ -24,6 +25,7 @@ class FiltersPage extends StatefulWidget {
 }
 
 class FiltersPageState extends State<FiltersPage> {
+
   ApplicationBloc _appBloc;
 
 //  MovieCatalogBloc _movieBloc;
