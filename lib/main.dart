@@ -28,7 +28,8 @@ void main() {
           new Example("http", "http pages", "HTTP"),
           new Example("dio", "dio pages", "DIO"),
           new Example("counter", "counter pages", "COUNTER"),
-          new Example("bloc", "bloc pages", "BLOC")
+          new Example("bloc", "bloc pages", "BLOC"),
+          new Example("filters", "filters BLOC pages", "FILTERS"),
         ],
       ),
       onGenerateRoute: onGenerateRoute));
@@ -136,6 +137,10 @@ class _ExampleListState extends State<ExampleList> {
       case "BLOC":
         Navigator.pushNamed(context, '/bloc');
         break;
+      case "FILTERS":
+        Navigator.pushNamed(context, '/filters');
+        break;
+
     }
   }
 
@@ -143,7 +148,7 @@ class _ExampleListState extends State<ExampleList> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Shopping List'),
+        title: new Text('ExampleList List'),
       ),
       body: new ListView(
         padding: new EdgeInsets.symmetric(vertical: 8.0),
