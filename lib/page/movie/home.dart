@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/bloc/bloc_provider.dart';
 import 'package:flutterapp/bloc/movie_catalog_bloc.dart';
+import 'package:flutterapp/page/movie/widgets/favorite_button.dart';
 
-class App extends StatelessWidget {
+class HomeBlocApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,10 +29,12 @@ class HomePage extends StatelessWidget {
             RaisedButton(
               child: Text('Movies List'),
               onPressed: () {
-//                _
+//                _openPage(context);
               },
             ),
-//            FavoriteButton
+//
+           FavoriteButton(child: Text('Favorite Movies'),),
+
           ],
         ),
       ),
@@ -43,7 +46,7 @@ class HomePage extends StatelessWidget {
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return BlocProvider<MovieCatalogBloc>(
         bloc: MovieCatalogBloc(),
-//              child: ListPage(),
+//        child: ListPage(),
       );
     }));
   }

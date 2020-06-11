@@ -18,6 +18,9 @@ void main() {
       title: 'ExampleList App',
       home: new ExampleList(
         examples: <Example>[
+          new Example("home", "home bloc pages", "HOME_BLOC"),
+          new Example("bloc", "bloc pages", "BLOC"),
+          new Example("filters", "filters BLOC pages", "FILTERS"),
           new Example("fonts", "fonts pages", "FONTS"),
           new Example("shop_list", "shop_list pages", "SHOP_LIST"),
           new Example("product_list", "product_list pages", "PRODUCT_LIST"),
@@ -28,8 +31,6 @@ void main() {
           new Example("http", "http pages", "HTTP"),
           new Example("dio", "dio pages", "DIO"),
           new Example("counter", "counter pages", "COUNTER"),
-          new Example("bloc", "bloc pages", "BLOC"),
-          new Example("filters", "filters BLOC pages", "FILTERS"),
         ],
       ),
       onGenerateRoute: onGenerateRoute));
@@ -140,6 +141,10 @@ class _ExampleListState extends State<ExampleList> {
       case "FILTERS":
         Navigator.pushNamed(context, '/filters');
         break;
+      case "HOME_BLOC":
+        Navigator.pushNamed(context, '/home_bloc');
+        break;
+
 
     }
   }

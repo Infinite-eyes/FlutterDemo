@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/bloc/application_bloc.dart';
 import 'package:flutterapp/bloc/bloc_provider.dart';
+import 'package:flutterapp/bloc/favorite_bloc.dart';
 import 'package:flutterapp/page/counter_page.dart';
 import 'package:flutterapp/page/counter_page_bloc.dart';
 import 'package:flutterapp/page/movie/filters.dart';
 import 'package:flutterapp/page/fontspage.dart';
 import 'package:flutterapp/page/http_dio_page.dart';
 import 'package:flutterapp/page/http_page.dart';
+import 'package:flutterapp/page/movie/home.dart';
 import 'package:flutterapp/page/navigate_with_arguments.dart';
 import 'package:flutterapp/page/product_info.dart';
 import 'package:flutterapp/page/search_page.dart';
@@ -28,9 +30,13 @@ final routes = {
         child: CounterBlocPage(),
       ),
   '/filters': (context) => BlocProvider<ApplicationBloc>(
-    bloc: ApplicationBloc(),
-    child: FiltersPage(),
-  ),
+        bloc: ApplicationBloc(),
+        child: FiltersPage(),
+      ),
+  '/home_bloc': (context, {arguments}) => BlocProvider<FavoriteBloc>(
+        bloc: FavoriteBloc(),
+        child: HomeBlocApp(),
+      ),
   ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
 };
 

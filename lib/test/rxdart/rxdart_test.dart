@@ -169,31 +169,33 @@ main() {
 //  subject1.add(1);
 
 //v18  https://www.jianshu.com/p/0467213c2615
-//  BehaviorSubject behaviorSubject = new BehaviorSubject();
-//  behaviorSubject.add(1);
-//
-//  behaviorSubject.stream.listen((data) {
-//    print("listen1 " + data.toString());
-//  });
-//
-//  behaviorSubject.add(2);
-//
-//  behaviorSubject.stream.listen((data){
-//    print('listen2 ' + data.toString());
-//  });
+  BehaviorSubject<int> behaviorSubject = new BehaviorSubject<int>();
+  behaviorSubject.add(1);
 
+  behaviorSubject.stream.listen((data) {
+    print("listen1 " + data.toString());
+  });
+
+  behaviorSubject.add(2);
+
+  behaviorSubject.stream.listen((data) {
+    print('listen2 ' + data.toString());
+  });
+
+  Stream<int> stream = behaviorSubject.stream;
+  print(stream);
 //v19
-  ReplaySubject replaySubject = new ReplaySubject<String>(maxSize: 1);
-  replaySubject.add("1");
-  replaySubject.stream.listen((data){
-    print("listen1 " + data);
-  });
 
-  replaySubject.add("2");
-  replaySubject.add("3");
-  replaySubject.stream.listen((data){
-    print("listen2 " + data);
-  });
-
-
+//  ReplaySubject replaySubject = new ReplaySubject<String>(maxSize: 1);
+//  replaySubject.add("1");
+//  replaySubject.stream.listen((data){
+//    print("listen1 " + data);
+//  });
+//
+//  replaySubject.add("2");
+//  replaySubject.add("3");
+//  replaySubject.stream.listen((data){
+//    print("listen2 " + data);
+//  });
+//  print(replaySubject.stream);
 }
