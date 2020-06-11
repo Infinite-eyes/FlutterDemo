@@ -29,12 +29,19 @@ class HomePage extends StatelessWidget {
             RaisedButton(
               child: Text('Movies List'),
               onPressed: () {
-//                _openPage(context);
+                _openPage(context);
               },
             ),
 //
-           FavoriteButton(child: Text('Favorite Movies'),),
-
+            FavoriteButton(
+              child: Text('Favorite Movies'),
+            ),
+            RaisedButton(
+              child: Text('One Page'),
+              onPressed: () {
+//                _openOnePage(context);
+              },
+            )
           ],
         ),
       ),
