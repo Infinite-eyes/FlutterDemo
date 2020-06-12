@@ -35,6 +35,9 @@ class MovieCatalogBloc implements BlocBase {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+
+
+
+
   }
 }
