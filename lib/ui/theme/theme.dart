@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapp/ui/global/theme/bloc/theme_bloc.dart';
 
 class MyApp extends StatelessWidget{
 

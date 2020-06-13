@@ -18,6 +18,7 @@ void main() {
       title: 'ExampleList App',
       home: new ExampleList(
         examples: <Example>[
+          new Example("timer","timer bloc pages", "TIMER_BLOC"),
           new Example("home", "home bloc pages", "HOME_BLOC"),
           new Example("bloc", "bloc pages", "BLOC"),
           new Example("filters", "filters BLOC pages", "FILTERS"),
@@ -144,8 +145,9 @@ class _ExampleListState extends State<ExampleList> {
       case "HOME_BLOC":
         Navigator.pushNamed(context, '/home_bloc');
         break;
-
-
+      case "TIMER_BLOC":
+        Navigator.pushNamed(context, '/timer_bloc');
+        break;
     }
   }
 

@@ -14,6 +14,7 @@ import 'package:flutterapp/page/product_info.dart';
 import 'package:flutterapp/page/search_page.dart';
 import 'package:flutterapp/page/shop_list.dart' as ShopList;
 import 'package:flutterapp/page/product.dart';
+import 'package:flutterapp/ui/timer/timer_test.dart';
 
 final routes = {
   '/fonts': (context) => FontsPage(),
@@ -37,6 +38,7 @@ final routes = {
         bloc: FavoriteBloc(),
         child: HomeBlocApp(),
       ),
+  '/timer_bloc': (context) => TimerTest(),
   ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
 };
 
