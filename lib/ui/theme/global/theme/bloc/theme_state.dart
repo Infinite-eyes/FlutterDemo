@@ -1,14 +1,15 @@
-part of 'theme_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 
 @immutable
 class ThemeState extends Equatable {
+  final ThemeData themeData;
 
-//  final ThemeData themeData;
-
-//  ThemeState([List props = const <dynamic>[]]) : super(props);
-
+  ThemeState({
+    @required this.themeData,
+  });
 
   @override
-  // TODO: implement props
-  List<Object> get props => throw UnimplementedError();
+  List<Object> get props => [themeData];
 }

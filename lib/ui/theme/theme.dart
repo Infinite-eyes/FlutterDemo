@@ -1,33 +1,28 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapp/ui/theme/global/theme/bloc/bloc.dart';
 
-class MyApp extends StatelessWidget{
+import 'home/home_page.dart';
 
-
+class ThemeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title:  Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      )
+    return BlocProvider(
+      create: (context) => ThemeBloc(),
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+        builder: _buildWithTheme,
+      ),
     );
-//      return BlocProvider(
-//        builder: (cotext) => ThemeBloc(),
-//        child: BlocBuilder<ThemeBloc,ThemeState>,
-//      );
-
-
   }
 
+  Widget _buildWithTheme(BuildContext context, ThemeState state) {
+    return MaterialApp(
+      title: 'Material App',
+      theme: state.themeData,
+      home: HomePage(),
+    );
+  }
 
-
+//vs command + dot (.)
+//as command + option + m
 }

@@ -14,6 +14,7 @@ import 'package:flutterapp/page/product_info.dart';
 import 'package:flutterapp/page/search_page.dart';
 import 'package:flutterapp/page/shop_list.dart' as ShopList;
 import 'package:flutterapp/page/product.dart';
+import 'package:flutterapp/ui/theme/theme.dart';
 import 'package:flutterapp/ui/timer/timer_test.dart';
 
 final routes = {
@@ -39,6 +40,8 @@ final routes = {
         child: HomeBlocApp(),
       ),
   '/timer_bloc': (context) => TimerTest(),
+  ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
+  '/theme_bloc': (context) => ThemeApp(),
   ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
 };
 
