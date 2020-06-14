@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapp/ui/timer/bloc/timer_bloc.dart';
 import 'package:flutterapp/ui/timer/ticker.dart';
 import 'package:flutterapp/ui/timer/timer_actions.dart';
 import 'package:flutterapp/ui/timer/timer_background.dart';
+
+import 'bloc/bloc.dart';
 
 //https://www.jianshu.com/p/47a3a6e6cc57
 class TimerTest extends StatelessWidget {

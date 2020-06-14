@@ -1,4 +1,7 @@
-part of 'timer_bloc.dart';
+
+
+import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 
 @immutable
 abstract class TimerState extends Equatable {
@@ -17,7 +20,6 @@ class ReadyState extends TimerState {
 }
 
 class PausedState extends TimerState {
-
   const PausedState(int duration) : super(duration);
 
   @override
@@ -33,6 +35,6 @@ class RunningState extends TimerState {
   }
 }
 
-class FinishedState extends TimerState{
-  const FinishedState(): super(0);
+class FinishedState extends TimerState {
+  const FinishedState() : super(0);
 }

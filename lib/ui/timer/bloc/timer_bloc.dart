@@ -1,11 +1,10 @@
 import 'dart:async';
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
-import '../ticker.dart';
 
-part 'timer_event.dart';
-part 'timer_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meta/meta.dart';
+import '../ticker.dart';
+import 'bloc.dart';
+
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
 

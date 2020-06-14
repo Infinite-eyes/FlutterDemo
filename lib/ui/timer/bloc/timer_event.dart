@@ -1,5 +1,6 @@
-part of 'timer_bloc.dart';
 
+import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 @immutable
 abstract class TimerEvent extends Equatable {
   const TimerEvent();
