@@ -21,10 +21,22 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return HomeContent();
+  }
+}
+
+//v4
+class HomeContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Center(
         child: Text(
-      '你好flutter',
+      '你好flutter11',
       textDirection: TextDirection.ltr,
+      style: TextStyle(
+          fontSize: 40.0,
+//          color: Colors.blue
+          color: Color.fromRGBO(0, 233, 213, 0.5)),
     ));
   }
 }
